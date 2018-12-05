@@ -28,12 +28,12 @@ Paso previo contar con un motor de base datos, configurado desde el fichero .env
 php artisan migrate
 ```
 
-### Paso 5 (Ejecutar script para la carga inicial de datos)
-```
-php artisan db:seed
-```
-
 ### Paso 5 (Ejecutar script para la carga de encryptacion de tokens con passport)
 ```
 php artisan passport:install
+```
+
+### Paso 6 (Ejecutar script para la carga inicial de datos)
+```
+php artisan db:seed
 ```
