@@ -21,15 +21,19 @@ composer install
 php artisan key:generate
 ```
 
-### Paso 2 (Ejecutamos las migraciones producto del enunciado)
+### Paso 4 (Ejecutamos las migraciones producto del enunciado)
 
 Paso previo contar con un motor de base datos, configurado desde el fichero .env y con la base de datos ya creada.
 ```
 php artisan migrate
 ```
 
-### Paso 3 (Ejecutar script para la carga inicial de datos)
+### Paso 5 (Ejecutar script para la carga inicial de datos)
 ```
 php artisan db:seed
 ```
 
+### Paso 5 (Ejecutar script para la carga de encryptacion de tokens con passport)
+```
+php artisan passport:install
+```
