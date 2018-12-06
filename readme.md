@@ -37,3 +37,13 @@ php artisan passport:install
 ```
 php artisan db:seed
 ```
+
+## Nota:
+
+* Puedes ver los servicies a traves del siguiente comando 
+
+```
+php artisan route:list
+```
+
+De todas formas se enviaran una collection de Postman con todos los services básicos para que realices el testing
