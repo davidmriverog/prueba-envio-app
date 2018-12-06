@@ -42,6 +42,20 @@ class RouteServiceProvider extends ServiceProvider
         //
     }
 
+    protected function getRoutes($dir)
+    {
+        if ($dh = opendir($dir)) {
+            while (($file = readdir($dh)) !== false) {
+                if (!is_dir($dir . $file) && $file != "." && $file != "..") {
+                    require $dir . $file;
+                } elseif ($file != "." && $file != "..") {
+                    $this->getRoutes($dir . $file . '/');
+                }
+            }
+            closedir($dh);
+        }
+    }
+
     /**
      * Define the "web" routes for the application.
      *
@@ -65,9 +79,17 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::prefix('api')
+        /*Route::prefix('api')
              ->middleware('api')
              ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
+             ->group(base_path('routes/api.php'));*/
+        
+        Route::group([
+                'middleware' => ['api'],
+                'namespace' => $this->namespace,
+                'prefix' => 'api',
+        ], function ($router) {
+            $this->getRoutes(base_path('routes/api/'));
+        });
     }
 }
